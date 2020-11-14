@@ -1,0 +1,10 @@
+/bin/quakespasm
+/bin/id1/pak0.pak
+/solid_commentary/pak0.pak
+/solid_commentary/qc/fteqcc.bin
+*.o
+*.pak
+*.log
+*.swp
+*.bak
+/history.txt

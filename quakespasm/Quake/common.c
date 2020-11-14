@@ -1274,17 +1274,19 @@ Looks for the pop.txt file and verifies it.
 Sets the "registered" cvar.
 Immediately exits out if an alternate game was attempted to be started without
 being registered.
+
+Change by rndtrash: shareware mode is no more.
 ================
 */
 static void COM_CheckRegistered (void)
 {
-	int		h;
-	unsigned short	check[128];
+	//int		h;
+	//unsigned short	check[128];
 	int		i;
 
-	COM_OpenFile("gfx/pop.lmp", &h, NULL);
+	//COM_OpenFile("gfx/pop.lmp", &h, NULL);
 
-	if (h == -1)
+	/*if (h == -1)
 	{
 		Cvar_SetROM ("registered", "0");
 		Con_Printf ("Playing shareware version.\n");
@@ -1295,16 +1297,16 @@ static void COM_CheckRegistered (void)
 				   "or use the -basedir command-line option to specify another directory.",
 				   com_basedir);
 		return;
-	}
+	}*/
 
-	Sys_FileRead (h, check, sizeof(check));
-	COM_CloseFile (h);
+	//Sys_FileRead (h, check, sizeof(check));
+	//COM_CloseFile (h);
 
-	for (i = 0; i < 128; i++)
+	/*for (i = 0; i < 128; i++)
 	{
 		if (pop[i] != (unsigned short)BigShort (check[i]))
 			Sys_Error ("Corrupted data file.");
-	}
+	}*/
 
 	for (i = 0; com_cmdline[i]; i++)
 	{
