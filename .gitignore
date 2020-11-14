@@ -1,5 +1,6 @@
 /bin/quakespasm
-/bin/id1/pak0.pak
+/bin/id1/**
+!/bin/id1/pak0.pak
 /solid_commentary/pak0.pak
 /solid_commentary/qc/fteqcc.bin
 *.o
