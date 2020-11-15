@@ -9,3 +9,6 @@
 *.swp
 *.bak
 /history.txt
+*-compile.prt
+*-compile.map
+*-compile.bsp
