@@ -35,6 +35,7 @@ void Mod_LoadAliasModel (qmodel_t *mod, void *buffer);
 qmodel_t *Mod_LoadModel (qmodel_t *mod, qboolean crash);
 
 cvar_t	external_ents = {"external_ents", "1", CVAR_ARCHIVE};
+cvar_t	r_modelfallback = {"r_modelfallback", "1", CVAR_NONE};
 
 static byte	*mod_novis;
 static int	mod_novis_capacity;
@@ -58,6 +59,7 @@ void Mod_Init (void)
 {
 	Cvar_RegisterVariable (&gl_subdivide_size);
 	Cvar_RegisterVariable (&external_ents);
+	Cvar_RegisterVariable (&r_modelfallback);
 
 	//johnfitz -- create notexture miptex
 	r_notexture_mip = (texture_t *) Hunk_AllocName (sizeof(texture_t), "r_notexture_mip");
@@ -85,7 +87,7 @@ void *Mod_Extradata (qmodel_t *mod)
 	if (r)
 		return r;
 
-	Mod_LoadModel (mod, true);
+	Mod_LoadModel (mod, false);
 
 	if (!mod->cache.data)
 		Sys_Error ("Mod_Extradata: caching failed");
@@ -333,9 +335,16 @@ qmodel_t *Mod_LoadModel (qmodel_t *mod, qboolean crash)
 	buf = COM_LoadStackFile (mod->name, stackbuf, sizeof(stackbuf), & mod->path_id);
 	if (!buf)
 	{
-		if (crash)
+		if (crash || !r_modelfallback.value)
+		{
 			Host_Error ("Mod_LoadModel: %s not found", mod->name); //johnfitz -- was "Mod_NumForName"
-		return NULL;
+			return NULL;
+		}
+		else if (r_modelfallback.value)
+		{
+			Con_Printf ("Mod_LoadModel: %s not found\n", mod->name);
+			return Mod_ForName (MOD_FALLBACK, true);
+		}
 	}
 
 //

@@ -197,6 +197,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #define	SOUND_CHANNELS		8
 
+// rndtrash: fallback model
+#define MOD_FALLBACK "progs/error.mdl"
+
 typedef struct
 {
 	const char *basedir;

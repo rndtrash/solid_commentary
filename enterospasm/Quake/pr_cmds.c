@@ -1117,7 +1117,7 @@ static void PF_precache_model (void)
 		if (!sv.model_precache[i])
 		{
 			sv.model_precache[i] = s;
-			sv.models[i] = Mod_ForName (s, true);
+			sv.models[i] = Mod_ForName (s, false);
 			return;
 		}
 		if (!strcmp(sv.model_precache[i], s))

@@ -3,6 +3,7 @@
 !/bin/id1/pak0.pak
 /solid_commentary/pak0.pak
 /solid_commentary/qc/fteqcc.bin
+/solid_commentary/maps/src/autosave
 *.o
 *.pak
 *.log
