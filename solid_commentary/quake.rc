@@ -9,3 +9,6 @@ exec autoexec.cfg
 
 // stuff command line statements
 stuffcmds
+
+// open main menu
+menu_main

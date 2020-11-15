@@ -2,7 +2,7 @@
 
 Мод на Quake про безымянного президента СШП, решившего испортить очередной подъезд.
 
-Некоторые ресурсы взяты с [LibreQuake](https://github.com/MissLav/LibreQuake).
+Некоторые ресурсы взяты с [LibreQuake](https://github.com/MissLav/LibreQuake). Используется модифицированный [QuakeSpasm](http://quakespasm.sourceforge.net) под названием EnteroSpasm.
 
 ## Установка
 

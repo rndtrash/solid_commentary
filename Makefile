@@ -1,16 +1,16 @@
 OUTPUT := bin
-QS_DIR := ./quakespasm/Quake
+ES_DIR := ./enterospasm/Quake
 SC_DIR := ./solid_commentary
-BIN_FILES := $(OUTPUT)/quakespasm \
+BIN_FILES := $(OUTPUT)/enterospasm \
 	$(OUTPUT)/id1/pak0.pak
 
-.PHONY: all quakespasm solid_commentary run clean
+.PHONY: all enterospasm solid_commentary run clean
 
-all: quakespasm solid_commentary
+all: enterospasm solid_commentary
 
-quakespasm:
-	make -C $(QS_DIR)
-	mv $(QS_DIR)/quakespasm $(OUTPUT)/
+enterospasm:
+	make -C $(ES_DIR)
+	mv $(ES_DIR)/enterospasm $(OUTPUT)/
 
 solid_commentary:
 	make -C $(SC_DIR)/qc
@@ -18,13 +18,13 @@ solid_commentary:
 	cp $(SC_DIR)/pak0.pak $(OUTPUT)/id1/pak0.pak
 
 run: all
-	$(OUTPUT)/quakespasm -basedir $(shell pwd)/$(OUTPUT)
+	$(OUTPUT)/enterospasm -basedir $(shell pwd)/$(OUTPUT)
 
-quakespasm_clean:
-	make -C $(QS_DIR) clean
+enterospasm_clean:
+	make -C $(ES_DIR) clean
 
 solid_commentary_clean:
 	make -C $(SC_DIR) clean
 
-clean: quakespasm_clean solid_commentary_clean
+clean: enterospasm_clean solid_commentary_clean
 	rm -f $(BIN_FILES)
